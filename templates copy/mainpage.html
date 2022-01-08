@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<title>W3.CSS Template</title>
+<html lang="en" >
+<title>Schelp</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -45,21 +45,35 @@ body {font-family: "Lato", sans-serif}
 
   <!-- Automatic Slideshow Images -->
   <div class="mySlides w3-display-container w3-center">
-    <img src="/Users/andrew/Desktop/MA_Hacks2022/templates/images/milton1.jpeg" style="width:100%">
+
+
+
+    <img src="static/milton1.jpeg" style="width:100%">
+
+
+
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
       <h3>Milton Academy</h3>
       <p><b>We LOVE the new schedule!! ;)</b></p>   
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
-    <img src="/Users/andrew/Desktop/MA_Hacks2022/templates/images/milton2.jpeg" style="width:100%">
+
+
+    <img src="static/milton2.jpeg" style="width:100%">
+
+
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
       <h3>AMC</h3>
       <p><b>we have not left the amc basement. ever.</b></p>    
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
-    <img src="/Users/andrew/Desktop/MA_Hacks2022/templates/images/milton3.jpg" style="width:100%">
+
+
+    <img src="static/milton3.jpg" style="width:100%">
+
+
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
       <h3>Milton Academy</h3>
       <p><b>Enjoy some tools for the new schedule!</b></p>    
@@ -74,15 +88,21 @@ body {font-family: "Lato", sans-serif}
     <div class="w3-row w3-padding-32">
       <div class="w3-third">
         <p>Andrew Rodriguez</p>
-        <img src="/Users/andrew/Desktop/MA_Hacks2022/templates/images/andrew.jpeg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <img src="static/andrew.jpeg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
       </div>
       <div class="w3-third">
         <p>Blake Ankner</p>
-        <img src="/Users/andrew/Desktop/MA_Hacks2022/templates/images/blake.jpeg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <img src="static/blake.jpeg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
       </div>
       <div class="w3-third">
         <p>Yaman Habip</p>
-        <img src="/Users/andrew/Desktop/MA_Hacks2022/templates/images/yaman.jpeg" class="w3-round" alt="Random Name" style="width:60%">
+
+    
+        <img src="static/yaman.jpeg" class="w3-round" alt="Random Name" style="width:60%">
+        
+
+
+
       </div>
     </div>
   </div>
@@ -93,7 +113,7 @@ body {font-family: "Lato", sans-serif}
       <h2 class="w3-wide w3-center">Join the Movement</h2>
       <p class="w3-opacity w3-center"><i>Dare to DARE</i></p><br>
 
-      <div class="w3-col m6">
+      
 
 
         <!--  -->
@@ -101,13 +121,15 @@ body {font-family: "Lato", sans-serif}
         <!--  -->
         <!--  -->
 
-        <form method = "GET" action = "getInfo" target="_blank">
+        <div class="w3-col m6" style = "width: 100%">
+
+        <form method = "GET" action = "getInfo" target="_blank" >
           <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
             <div class="w3-half">
               <input class="w3-input w3-border" type="text" placeholder="MyMilton Username" name = "user">
             </div>
-            <div class="w3-half">
-              <input class="w3-input w3-border" type="password" placeholder="MyMilton Password" name="user">
+            <div class="w3-half" id = "passBaby">
+              <input class="w3-input w3-border" type="password" placeholder="MyMilton Password" name="pass">
             </div>
           </div>
 
@@ -116,17 +138,29 @@ body {font-family: "Lato", sans-serif}
               <input class="w3-input w3-border" type="text" placeholder="Phone Number" required name="phone">
             </div>
             <div class="w3-half">
-              <input class="w3-input w3-border" type="text" placeholder="Week" name = "week">
+              <select class="w3-input w3-border" name = "week" id = "week">
+                <option value="Orange">Orange Week</option>
+                <option value="Blue">Blue Week</option>
+              <select>
             </div>
 
           </div>
 
 
-          <input class="w3-input w3-border" type="file" data-buttonText="Html file of your Schedule" name="schedule">
 
 
 
-          <button class="w3-button w3-light-grey w3-section w3-right" type="submit">SEND</button>
+          <div style = " padding: 8px 5px">Upload the HTML file of your schedule!</div>
+
+
+
+          <input class="w3-input w3-border" type="file" data-buttonText="Html file of your Schedule" name = "schedule"> 
+          
+          
+
+
+
+          <button  class="w3-button w3-light-grey w3-section w3-right" type="submit" onclick="check()">SEND</button>
 
 
         </form>
@@ -202,6 +236,11 @@ function myFunction() {
   } else { 
     x.className = x.className.replace(" w3-show", "");
   }
+}
+
+function check() {
+  var password = document.getElementById("passBaby").value();
+  console.log(password);
 }
 
 // When the user clicks anywhere outside of the modal, close it

@@ -5,11 +5,16 @@ import numpy as np
 from pprint import pprint
 import pandas as pd
 from datetime import datetime
+import yaml
 
 import finalTwillio
+import autoLogin
 
 
-def mainFunction(user,password,phone,week,file):
+
+def mainFunction(user,passwrd,phone,week,file):
+
+
 
 	path = file
 	schedule = BeautifulSoup(open(path), "html.parser")
@@ -48,9 +53,42 @@ def mainFunction(user,password,phone,week,file):
 	        classes.append(class_name)
 	    new_schedule[i] = classes 
 
-	orange_week = False #Input true or false for Orange Week (True = Orange ; False = Blue)
+	if week.lower() == "blue":
+		orange_week = False #Input true or false for Orange Week (True = Orange ; False = Blue)
 
-	temp = pd.Timestamp('2022-1-6') #should be a thursday FOR TESTING 
+	else:
+		orange_week = True
+
+
+
+
+
+	stream = open("info.yml", 'r')
+	data = yaml.safe_load(stream)
+
+	milton_username = user
+	milton_pass = passwrd
+
+	# print(user, passwrd)
+# 
+	data["fb_user"]["UserLogin"] = milton_username
+	data["fb_user"]["UserPassword"] = milton_pass
+
+	# print(data)
+
+	with open("info.yml", 'w') as yaml_file:
+		yaml_file.write( yaml.dump(data, default_flow_style=False))
+		print("done")
+
+
+
+
+
+
+
+
+
+	temp = pd.Timestamp('2022-1-4') #should be a thursday FOR TESTING 
 
 	index_of_week = (datetime.today().weekday()) #today's date REAL APPLICATION
 
@@ -59,10 +97,12 @@ def mainFunction(user,password,phone,week,file):
 	if temp.dayofweek < 5: #only work on weekdays
 	    if orange_week: #shift depending on orange week or not
 	        index = temp.dayofweek + 5
+	        print("DAY OF WEEK: ",index)
 	    else:
 	        index = temp.dayofweek
 
-	now = datetime.strptime((datetime.now().strftime("%I:%M")), "%H:%M").time() #get current time
+	# ACTUAL: (datetime.now().strftime("%I:%M"))
+	now = datetime.strptime("8:04", "%H:%M").time() #get current time
 
 
 	# five_min = datetime.strptime("0:05", "%H:%M")
@@ -75,28 +115,45 @@ def mainFunction(user,password,phone,week,file):
 	section = tables[2]["Section"].values.tolist() #classes code
 	course = tables[2]["Course"].values.tolist() #classes full name
 
+	# print(f"Section: {section}, Course: {course}")
+
 	msg = "failure"
 
 	for k, v in new_schedule.items():
 	    class_start = datetime.strptime(k, "%H:%M")
-	    five_min = datetime.strptime("0:55", "%H:%M") #here we can make the time before for an alert dynamic
+	    five_min = datetime.strptime("0:05", "%H:%M") #here we can make the time before for an alert dynamic
 	    check_time = datetime.strptime(str(class_start-five_min), "%H:%M:%S").time()
 	    print(f"class start: {class_start.time()}; check time: {check_time}; now: {now}")
 	    if check_time <= now and now <= class_start.time(): #check if time is between the class and x minutes before
-	    	print("you shuold have a class")
+	    	print(v[index], section)
 	    	if v[index] in section:
-	        	
-	        	loc = section.index(v[index])
-	        	name = course[loc] #renaming
-	        	msg = (f"On {index} at {class_start.time()}, you have: ", name, f"({v[index]})") #This is where you should text the info
+	    		loc = section.index(v[index])
+	    		print(loc)
+	    		name = course[loc] #renaming
+	    		print(name)
+	    		message = f"At {class_start.time()}, you have: {name} ({v[index]})."
+	    		print(message)
+	    		msg = (message) #This is where you should text the info
+	    		print("FOUND CLASS")
+	    		break
+    		elif v[index] == "Free":
+    			msg = f"At {class_start.time()}, you have: {v[index]} live it up darling!"
+    			break
 
 	    else:
+	    	print("we came here")
 	    	msg = "no class atm"
 
 	#DEFINE TWILLIO MESSAGE
 
 
 	finalTwillio.send_message(msg,phone)
+
+
+	#autoLogin.Check_Login()
+
+
+
 
 
 
