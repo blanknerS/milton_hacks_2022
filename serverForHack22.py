@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import parseSchedule
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 @app.route('/getInfo' )
 def collect_info():
