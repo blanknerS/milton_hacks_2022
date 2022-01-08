@@ -12,14 +12,6 @@ myFbUsername = conf['fb_user']['UserLogin']
 myFbPassword = conf['fb_user']['UserPassword']
 ip_key = conf['api_info']['key_ip']
 
- 
-with requests.Session() as s:
-    site = s.get("https://mymustangs.milton.edu/Student/index.cfm")
-    login_data = {"UserLogin":f"{myFbUsername}","UserPassword":f"{myFbPassword}"}
-    s.post("https://mymustangs.milton.edu/Student/index.cfm",login_data)
-    home_page = s.get("https://mymustangs.milton.edu/Student/index.cfm?")
-    html_file = bs(home_page.text, "html.parser")
-    # print(html_file)
 
 client = IpregistryClient(f"{ip_key}")  
 ipInfo = client.lookup().__dict__ #has a crap ton oof info!
@@ -47,11 +39,18 @@ def in_between(now, start, end):
 if in_between(datetime.now().time(), time(8), time(12)):
     try:
         if location["address"]["amenity"] == "Milton Academy":
-            print("worked")
+            with requests.Session() as s:
+                site = s.get("https://mymustangs.milton.edu/Student/index.cfm")
+                login_data = {"UserLogin":f"{myFbUsername}","UserPassword":f"{myFbPassword}"}
+                s.post("https://mymustangs.milton.edu/Student/index.cfm",login_data)
+                home_page = s.get("https://mymustangs.milton.edu/Student/index.cfm?")
+                html_file = bs(home_page.text, "html.parser")
+                # print(html_file)
     except:
         print("Location not Milton")
 else:
     print("dont check location")
+
 
 
 
