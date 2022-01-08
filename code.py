@@ -28,7 +28,7 @@ lon = ipInfo["_json"]["location"]["longitude"]
 
 app = Nominatim(user_agent="tutorial")
 
-# milton coords
+# demo coords
 coordinates_ma = f"{42.2567590}, {-71.0700127}"
 
 # get location by coordinates 
@@ -44,7 +44,7 @@ def in_between(now, start, end):
     else: # over midnight e.g., 23:30-04:15
         return start <= now or now < end
 
-if in_between(datetime.now().time(), time(8), time(10)):
+if in_between(datetime.now().time(), time(8), time(12)):
     try:
         if location["address"]["amenity"] == "Milton Academy":
             print("worked")
