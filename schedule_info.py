@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import numpy as np
 from pprint import pprint
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 
 path = "/Users/blakeankner/Desktop/programming/milton_hackathon_2022/schedule.html"
 
@@ -30,7 +30,10 @@ df = sp500_table[0].iloc[3:]
 for i in sp500_table:
     if i >= 3:
         for p in sp500_table: 
-            times[sp500_table.iloc[i][0][3:7]] = sp500_table.iloc[i][1:].values.tolist()
+            key = sp500_table.iloc[i][0][3:8].replace("-", "").strip()
+            if key == "Exte":
+                key = sp500_table.iloc[i][0][12:17].replace("-", "").strip()
+            times[key]= sp500_table.iloc[i][1:].values.tolist()
 
 new_schedule = {}
 
@@ -60,10 +63,19 @@ if temp.dayofweek < 5:
     else:
         index = temp.dayofweek
 
-pprint(new_schedule["2:20"][index])
-
-print(datetime.strptime("2:20", "%H:%M").time())
+# pprint(new_schedule["2:20"][index])
 
 now = datetime.now().time()
 
-print(now)
+def in_between(now1, start, end):
+    if start <= end:
+        return start <= now1 < end
+    else: # over midnight e.g., 23:30-04:15
+        return start <= now1 or now1 < end
+
+for k, v in new_schedule.items():
+    class_start = datetime.strptime(k, "%H:%M")
+    five_min = datetime.strptime("0:20", "%H:%M")
+    check_time = datetime.strptime(str(class_start-five_min), "%H:%M:%S").time()
+    if check_time <= now and now <= class_start.time():
+        print(f"On {index} at {class_start}, you have: ", v[index])
