@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Schedules</title>
+  <style>
+    table,
+    table td {
+      border: solid #DEDCDA;
+
+    }
+
+    table {
+      font-family: Verdana, Geneva, sans-serif;
+      border-collapse: collapse;
+      border-width: 1px 1px 0 0;
+      width: 95%;
+    }
+
+    table td {
+      border-width: 0 0 1px 1px;
+      padding: 5px;
+      font-size: 10px;
+      vertical-align: top;
+    }
+
+    .splitLine {
+      padding: 5px;
+      border-right: 6px solid #DEDCDA;
+    }
+
+    .blueWeek {
+      background-color: blue;
+      color: white;
+      font-size: 12px;
+      border-top: 0px solid white;
+      border-bottom: 0px solid orange;
+      border-right: 0px solid #DEDCDA;
+      padding: 10px;
+    }
+
+    .dowHeader {
+      color: black;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px;
+    }
+
+    .dowHeaderSplit {
+      color: black;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px;
+      border-right: 6px solid #DEDCDA;
+    }
+
+    .orangeWeek {
+      background-color: orange;
+      color: white;
+      font-size: 12px;
+      border-top: 0px solid white;
+      border-bottom: 0px solid orange;
+      border-right: 0px solid #DEDCDA;
+      padding: 10px;
+    }
+
+    .orangeSplit {
+      border-top: 0px solid orange;
+    }
+
+    .acadHeader {
+      background-color: #DEDCDA;
+      font-size: 10px;
+      padding: 5px;
+    }
+
+    .noBorder {
+      border-top: 0px solid white;
+      border-bottom: 0px solid white;
+      border-left: 0px solid white;
+      border-right: 0px solid white;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <table cellspacing="0" cellpadding="0" border="0" align="center">
+    <tr>
+      <td colspan="12" align="center">
+
+        <span style="font-size:14px;font-weight:bold;">Winter A Schedule for Ankner, Blake (2023)</span>
+        <span><br>Advisor: Morlot, Cédric</span>
+
+        <span style="font-size:12px;font-weight:bold;color:orange;">
+          <p>This week (01/02/2022-01/08/2022) is a Orange Week schedule</p>
+        </span>
+
+        <a href="fetch.cfm?TID=2&vSID=ANKB230&pdf=1" target="_blank" class="text">Print this schedule</a>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Change to:
+
+
+        <a href="fetch.cfm?TID=1&vSID=ANKB230&pdf=0" class="text">
+          Fall</a>&nbsp;&nbsp;
+
+        <a href="fetch.cfm?TID=2&vSID=ANKB230&pdf=0" class="text">
+          <b>Winter A</b></a>&nbsp;&nbsp;
+
+        <a href="fetch.cfm?TID=3&vSID=ANKB230&pdf=0" class="text">
+          Winter B</a>&nbsp;&nbsp;
+
+        <a href="fetch.cfm?TID=4&vSID=ANKB230&pdf=0" class="text">
+          Spring</a>&nbsp;&nbsp;
+
+      </td>
+    </tr>
+    <tr>
+      <th>&nbsp;</th>
+      <th colspan="5" class="blueWeek">Blue Week</th>
+      <th colspan="6" class="orangeWeek">Orange Week</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="dowHeader">Mon</td>
+      <td class="dowHeader">Tues</td>
+      <td class="dowHeader">Weds</td>
+      <td class="dowHeader">Thurs</td>
+      <td class="dowHeaderSplit">Fri</td>
+
+      <td class="dowHeader">Mon</td>
+      <td class="dowHeader">Tues</td>
+      <td class="dowHeader">Weds</td>
+      <td class="dowHeader">Thurs</td>
+      <td class="dowHeader">Fri</td>
+    </tr>
+    <tr>
+      <td class="periodLabel">1st<br>8:05-9:05</td> <!-- key -->
+      <td><strong>PEW-1</strong><br>ACC</td> <!-- [0] -->
+      <td><strong>ENRC-3</strong><br>WRN321</td> <!-- [1] -->
+      <td><strong>ARPHDF-1</strong><br>AMC210</td> <!-- [2] -->
+      <td><strong>SCBIO-7</strong><br>PSC106</td> <!-- [3] -->
+      <td class="splitLine"><strong>MCAL1-2</strong><br>COXG06</td> <!-- [4] -->
+
+      <td><strong>ARPHDF-1</strong><br>AMC210</td> <!-- [5] -->
+      <td></td> <!-- [5] free -->
+      <td><strong>ENRC-3</strong><br>WRN321</td> <!-- [7] -->
+      <td><strong>ENJH-1</strong><br>SC401</td> <!-- [8] -->
+      <td><strong>SCBIO-7</strong><br>PSC106</td> <!-- [9] -->
+    </tr>
+    <tr>
+      <td class="periodLabel">1st Extended<br> 9:05-9:25</td>
+      <td></td>
+      <td></td>
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td><strong>SCBIO-7</strong><br>PSC106</td>
+      <td class="splitLine"></td>
+
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td></td>
+      <td><strong>ENRC-3</strong><br>WRN321</td>
+      <td></td>
+      <td><strong>SCBIO-7</strong><br>PSC106</td>
+    </tr>
+    <tr>
+      <td class="periodLabel" bgcolor="E2E2E2">2nd<br>9:30-10:00</td>
+      <td bgcolor="E2E2E2"><strong>ASM-2</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>CLUB1-1</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>ADVS-1</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>HELP-1</strong><br></td>
+      <td bgcolor="E2E2E2" class="splitLine"><strong>CLUB3-1</strong><br></td>
+
+      <td bgcolor="E2E2E2"><strong>CLMTG-2</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>CLUB4-1</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>ADVS-1</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>HELP-1</strong><br></td>
+      <td bgcolor="E2E2E2"><strong>CLUB6-1</strong><br></td>
+    </tr>
+    <tr>
+      <td class="periodLabel">3rd Extended<br>10:05-10:25</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="splitLine"></td>
+      <td><strong>SCBIO-7</strong><br>PSC106</td>
+      <td></td>
+      <td><strong>MCAL1-2</strong><br>COXG06</td>
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="periodLabel">3rd<br>10:25-11:25</td>
+      <td><strong>MCAL1-2</strong><br>COXG06</td>
+      <td><strong>ENJH-1</strong><br>SC401</td>
+      <td></td>
+      <td><strong>PEW-1</strong><br>ACC</td>
+      <td class="splitLine"><strong>ENRC-3</strong><br>WRN321</td>
+      <td><strong>SCBIO-7</strong><br>PSC106</td>
+      <td></td>
+      <td><strong>MCAL1-2</strong><br>COXG06</td>
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="periodLabel">4th<br>11:35-12:35</td>
+      <td><strong>CS4H-1</strong><br>AMC004</td>
+      <td><strong>MCAL1-2</strong><br>COXG06</td>
+      <td></td>
+      <td></td>
+      <td class="splitLine"><strong>ENJH-1</strong><br>SC401</td>
+      <td><strong>PEW-1</strong><br>ACC</td>
+      <td></td>
+      <td><strong>SCBIO-7</strong><br>PSC106</td>
+      <td><strong>CS4H-1</strong><br>AMC004</td>
+      <td></td>
+    <tr>
+      <td class="periodLabel">5th<br>12:05-1:05</td>
+      <td></td>
+      <td></td>
+      <td><strong>ENRC-3</strong><br>WRN321</td>
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td class="splitLine"></td>
+      <td></td>
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="periodLabel">6th<br>1:15-2:15</td>
+      <td><strong>ARPHDF-1</strong><br>AMC210</td>
+      <td></td>
+      <td></td>
+      <td bgcolor="E2E2E2"><strong>CLUB2-1</strong><br></td>
+      <td class="splitLine"><strong>SCBIO-7</strong><br>PSC106</td>
+      <td></td>
+      <td><strong>MCAL1-2</strong><br>COXG06</td>
+      <td></td>
+      <td bgcolor="E2E2E2"><strong>CLUB5-1</strong><br></td>
+      <td><strong>ENRC-3</strong><br>WRN321</td>
+
+    </tr>
+    <tr>
+      <td class="periodLabel">7th<br>2:20-3:20</td>
+      <td><strong>SCBIO-7</strong><br>PSC106</td>
+      <td bgcolor="E2E2E2"><strong>ASP-2</strong><br></td>
+      <td></td>
+      <td></td>
+      <td class="splitLine"><strong>CS4H-1</strong><br>AMC004</td>
+      <td><strong>ENRC-3</strong><br>WRN321</td>
+      <td bgcolor="E2E2E2"><strong>ASP-2</strong><br></td>
+      <td></td>
+      <td><strong>PEW-1</strong><br>ACC</td>
+      <td><strong>MCAL1-2</strong><br>COXG06</td>
+    </tr>
+
+  </table>
+
+  <hr>
+  <table border="0" cellpadding="0" cellspacing="0" width="75%" align="center" class="noBorder">
+    <tr>
+      <td valign="top" class="noBorder">
+
+        <table align="left" cellpadding="0" cellspacing="0">
+
+
+          <tr>
+            <th align="left" class="acadHeader">Section</th>
+            <th align="left" class="acadHeader">Course</th>
+            <th align="left" class="acadHeader">Room</th>
+            <th align="left" class="acadHeader">Teacher 1</th>
+            <th align="left" class="acadHeader" nowrap>Teacher 2</th>
+            <th align="left" class="acadHeader">Term</th>
+          </tr>
+
+
+          <tr>
+            <td>ENRC-3</td>
+            <td nowrap>Eng: Reading Consciousness</td>
+            <td>WRN321</td>
+            <td nowrap>Margraf, T</td>
+            <td></td>
+            <td>Full</td>
+          </tr>
+
+
+          <tr>
+            <td>MCAL1-2</td>
+            <td nowrap>Calculus (Honors)</td>
+            <td>COXG06</td>
+            <td nowrap>HerrNeckar, T</td>
+            <td></td>
+            <td>Full</td>
+          </tr>
+
+
+          <tr>
+            <td>SCBIO-7</td>
+            <td nowrap>Biology</td>
+            <td>PSC106</td>
+            <td nowrap>Rojas, C</td>
+            <td></td>
+            <td>Full</td>
+          </tr>
+
+
+          <tr>
+            <td>CS4H-1</td>
+            <td nowrap>Adv Comp: App Math & AI (1/2)</td>
+            <td>AMC004</td>
+            <td nowrap>Killiam, C</td>
+            <td></td>
+            <td>Half</td>
+          </tr>
+
+
+          <tr>
+            <td>ENJH-1</td>
+            <td nowrap>Eng: Journalism (1/2)</td>
+            <td>SC401</td>
+            <td nowrap>Baker, L</td>
+            <td></td>
+            <td>Half</td>
+          </tr>
+
+
+          <tr>
+            <td>ARPHDF-1</td>
+            <td nowrap>Adv Photo: Digital Imaging (Sem 1)</td>
+            <td>AMC210</td>
+            <td nowrap>Nobles, S</td>
+            <td></td>
+            <td>Sem1</td>
+          </tr>
+
+
+          <tr>
+            <td>PEW-1</td>
+            <td>PE Winter</td>
+            <td>ACC</td>
+            <td nowrap>Lawlor, M</td>
+            <td></td>
+            <td>Winter</td>
+          </tr>
+
+          <tr>
+            <td colspan="6" valign="middle" align="center" height="50">Printed on 01/07/2022</td>
+          </tr>
+        </table>
+      </td>
+      <td valign="top" class="noBorder">
+        <table width="200" align="left" cellpadding="0" cellspacing="0">
+
+          <thead>
+            <tr>
+              <th align="left" class="acadHeader">Code</th>
+              <th align="left" class="acadHeader">Title</th>
+            </tr>
+          </thead>
+
+
+
+          <tr>
+            <td class="course">CLMTG</td>
+            <td class="course" nowrap>Class Meetings</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">HELP</td>
+            <td class="course" nowrap>Extra Help Time</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">ASM</td>
+            <td class="course" nowrap>All School Meeting</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">ADVS</td>
+            <td class="course" nowrap>Advisory</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">CLB1</td>
+            <td class="course" nowrap>Club Meeting #1</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">CLB2</td>
+            <td class="course" nowrap>Club Meeting #2</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">CLB3</td>
+            <td class="course" nowrap>Club Meeting #3</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">CLB4</td>
+            <td class="course" nowrap>Club Meeting #4</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">CLB5</td>
+            <td class="course" nowrap>Club Meeting #5</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">CLB6</td>
+            <td class="course" nowrap>Club Meeting #6</td>
+          </tr>
+
+
+
+
+          <tr>
+            <td class="course">ASP</td>
+            <td class="course" nowrap>All School Programming</td>
+          </tr>
+
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+
+</body>
+
+</html>
