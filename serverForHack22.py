@@ -15,7 +15,6 @@ def collect_info():
 	file = request.args.get("schedule")
 
 
-
 	#basicTwil.send_info(user,password,phone,week)
 	#readFile.readSchedule(scooby)
 
